@@ -1,308 +1,133 @@
-# Proyecto de Compañía - Ingeniería de IA — Plantilla para estudiantes
+# Bienvenido a HealthCore
 
-[![4Geeks Academy](https://img.shields.io/badge/4Geeks-Academy-blue)](https://4geeksacademy.com)
-[![AI Engineering](https://img.shields.io/badge/track-AI%20Engineering-green)](https://4geeksacademy.com/es/programas-de-carrera/ingenieria-ia)
-
-_Plantilla base para proyectos transversales del Programa de Carrera en Ingeniería de IA — 4Geeks Academy._
-
-_These instructions are also available in [English](./README.md)._
+## AI Engineering · 4Geeks Academy — Briefing de empresa
 
 ---
 
-## Propósito
+HealthCore es una empresa sanitaria de atención ambulatoria fundada en 2011 en Austin, Texas. Opera una red de **12 clínicas** — 9 en Estados Unidos (Texas, Florida y Georgia) y 3 en el Reino Unido (Londres y Mánchester) — que ofrecen atención primaria, consultas con especialistas, gestión de enfermedades crónicas y programas de salud preventiva. La empresa emplea a unas **200 personas** entre personal clínico, operaciones, administración y una unidad tecnológica en crecimiento. La facturación anual ronda los **28 millones de dólares**.
 
-Este repositorio es la **plantilla de inicio** para los proyectos transversales. Trabajarás con escenarios de empresas reales (Brasaland, TrackFlow, Nexova) construyendo entregables que se corresponden con los hitos del curso (Web, Programación, Backend, Telemetría, RAG, Agentes, Workflows, Tiempo real).
+HealthCore se construyó sobre una idea sencilla: atención de calidad y accesible que no obliga a los pacientes a esperar semanas para una cita ni a navegar por un sistema confuso. Citas en el mismo día, horarios ampliados y personal bilingüe en los mercados estadounidenses se convirtieron en las señas de identidad de la marca. Durante la mayor parte de su historia, eso fue suficiente para crecer de forma constante y ganar una base de pacientes fiel en los dos países.
 
-- Crea una plantilla a partir de este repositorio.
-- Reemplaza el `CONTEXT.md` placeholder por el contexto de tu empresa asignada.
-- Usa `skills/` y los `README.md` por carpeta como guía de trabajo.
+Ya no es suficiente.
 
----
+## Cómo está organizada la empresa
 
-## Cómo empezar
+HealthCore está liderada por **la Dra. Sandra Okonkwo**, médica que pasó años trabajando dentro de grandes sistemas hospitalarios antes de fundar la empresa, frustrada por el tiempo que los clínicos dedicaban a tareas administrativas en lugar de a los pacientes. Es precisa, orientada a la evidencia y profundamente escéptica con la tecnología que no resuelve un problema real — pero ha llegado a entender que sin sistemas modernos, HealthCore no puede gestionar lo que ya ha construido, y mucho menos seguir creciendo.
 
-1. **Usa este repositorio como plantilla** y crea tu propio repo de proyecto.
-2. **Clona** tu repositorio (o ábrelo en Codespaces).
-3. **Reemplaza** `CONTEXT.md` con el contexto completo de tu empresa asignada.
-4. **Lee esta guía de carpetas** y abre el `README.md` de la carpeta en la que estés trabajando.
-5. **Empieza a implementar** en la carpeta correcta — no tires todo en la raíz.
-6. **Documenta** lo que añadas: cada app, servicio, agente o pipeline nuevo lleva subcarpeta + README.
+La empresa se organiza en las siguientes áreas:
 
----
+**Operaciones Clínicas** es donde ocurre la medicina. El Dr. Marcus Reid supervisa a unos 120 integrantes del personal clínico — médicos, enfermeras de práctica avanzada, enfermeras y auxiliares — en las 12 sedes. Cada clínica opera de forma relativamente independiente, con sus propios procesos y su propio sistema de historia clínica electrónica. Los centros de EE.UU. y los del Reino Unido utilizan plataformas distintas que no se comunican entre sí.
 
-## Cómo entender este monorepo
+**Experiencia del Paciente y Acceso** gestiona todo lo que ocurre antes y después del encuentro clínico: reservar citas, recordar a los pacientes, hacer seguimiento y garantizar que el paciente tenga una experiencia fluida desde el primer contacto hasta el alta. Priya Nair lidera esta función desde Londres y es muy consciente de que una tasa de no-shows del 22% en la red representa tanto un fallo con el paciente como una pérdida económica significativa.
 
-Estás construyendo **una sola empresa** a lo largo de muchos hitos y proyectos. Cada carpeta de primer nivel tiene **una responsabilidad clara** — como en un repositorio real de un equipo de ingeniería.
+**Ciclo de Ingresos y Facturación** es el área responsable de cobrar por la atención que HealthCore presta. En EE.UU., eso significa navegar por los seguros comerciales, Medicare y Medicaid — un proceso complejo de reclamaciones y reembolsos donde una tasa de rechazo del 14% (más del doble de la media del sector) está costando a la empresa dinero real. En el Reino Unido, la facturación combina pago privado y un pequeño contrato con el NHS. Tom Callahan gestiona ambas corrientes de ingresos, pero sin una visión unificada de ninguna de ellas.
 
-| Capa                    | Carpetas                          | Qué vive aquí                                                               |
-| ----------------------- | --------------------------------- | --------------------------------------------------------------------------- |
-| **Contexto de empresa** | `CONTEXT.md`                      | Datos del dominio, nombres de campos y restricciones de tu empresa asignada |
-| **Cara al usuario**     | `uis/`, `services/`               | Frontends y backends con los que interactúan usuarios u operadores          |
-| **Datos**               | `data/`                           | Archivos crudos, pipelines, datasets procesados y conjuntos de evaluación   |
-| **IA**                  | `agents/`, `skills/`, `mcps/`     | Agentes, capacidades reutilizables para agentes y servidores MCP            |
-| **Automatización**      | `workflows/`                      | Flujos n8n y orquestación entre sistemas                                    |
-| **Reutilización**       | `packages/`, `shared/`            | Tipos compartidos, SDKs, esquemas, plantillas                               |
-| **Operaciones**         | `infra/`, `scripts/`, `internal/` | Docker, despliegue, scripts puntuales, CLIs internas                        |
-| **Documentación**       | `docs/`                           | Arquitectura, decisiones y convenciones de todo el repo                     |
+**Cumplimiento y Gobierno del Dato** es lo que mantiene a HealthCore dentro de la ley. Claire Whitfield gestiona las obligaciones de la empresa bajo HIPAA en EE.UU. y UK GDPR en el Reino Unido — dos marcos distintos con reglas diferentes sobre cómo se pueden almacenar, acceder y compartir los datos de los pacientes. Cualquier sistema que HealthCore construya o adopte debe evaluarse bajo esta perspectiva. El equipo de Claire es pequeño, pero su autoridad dentro de la organización es considerable.
 
-**Regla rápida:** si tiene interfaz visual → `uis/`. Si expone una API o corre en segundo plano → `services/`. Si mueve o transforma datos → `data/`. Si el trabajo lo hace un modelo de IA → `agents/` (+ `skills/` o `mcps/` según haga falta).
+**Personas y Fuerza Laboral** gestiona las 200 personas distribuidas en 12 sedes de dos países, cada uno con su propio marco de derecho laboral. Diane Foster se encarga de todo, desde la contratación — los perfiles clínicos son difíciles de cubrir y tardan una media de 47 días en cerrarse — hasta el onboarding, la formación en cumplimiento normativo y el seguimiento de las horas de formación médica continua que los clínicos están legalmente obligados a completar para mantener sus licencias.
 
----
+**Tecnología** es el equipo encargado de hacer que todo esto funcione. James Osei, el CTO, lidera a seis personas en Austin. Son responsables de un mosaico de sistemas heredados que fueron construidos o adquiridos individualmente para resolver un problema concreto y que nunca se han integrado correctamente. Dos sistemas de historia clínica electrónica distintos. Una plataforma de facturación para EE.UU. Una hoja de cálculo de facturación para el Reino Unido. Un sistema de programación de citas por teléfono en EE.UU. Una agenda manual en el Reino Unido. Ninguna capa de datos compartida entre ninguno de ellos.
 
-## Estado actual de la plantilla
+**Dirección Ejecutiva** recae en la Dra. Okonkwo, que recibe informes semanales de cada responsable de área — todos con formatos distintos, a veces contradictorios y siempre basados en datos que llevan varios días de retraso. Gestiona una red clínica de 28 millones de dólares en dos países sin poder responder a una pregunta tan básica como "¿cuál es nuestra tasa de no-shows en la red esta semana?" sin hacer llamadas.
 
-> 💡 Actualmente el repositorio ofrece solo una **estructura base de carpetas y documentación**. Todavía no incluye aplicaciones ejecutables ni scripts globales en la raíz.
->
-> - `CONTEXT.md` es un placeholder y debe sustituirse por el contexto de la empresa asignada.
-> - No existe todavía un `AGENTS.md` en la raíz.
-> - Existe metadata del paquete compartido en `packages/shared/package.json` (`@repo/shared-types`), pero aún no hay runner de workspace en raíz.
+## Dónde está la empresa hoy
+
+HealthCore ha construido algo genuinamente valioso: una red de clínicas en las que los pacientes confían y en las que el personal clínico quiere trabajar. Pero la infraestructura que sostiene el trabajo clínico no ha crecido al mismo ritmo que la empresa. Las consecuencias van de lo inconveniente a lo serio.
+
+Los pacientes en EE.UU. reservan por teléfono mientras los del Reino Unido llaman a la recepción — no existe ningún sistema de reservas online compartido. Un quinto de los pacientes no acude a sus citas y no hay ningún sistema de contacto proactivo para prevenirlo. El personal clínico dedica 35 minutos al día a tareas de documentación que la IA podría asistir. Los rechazos de facturación cuestan millones cada año. La formación en cumplimiento se sigue registrando en una hoja de cálculo. Los datos de los pacientes fluyen por sistemas que nunca fueron diseñados para compartir información.
+
+Operar en el sector sanitario añade una capa de responsabilidad que no existe en otras industrias. Los datos de los pacientes están protegidos por ley — HIPAA en EE.UU., UK GDPR en el Reino Unido. Cada sistema que gestione esos datos debe cumplir estándares legales específicos. Los errores no son solo ineficiencias; en el ámbito sanitario, pueden tener consecuencias para pacientes reales.
+
+La Dra. Okonkwo ha creado una unidad interna llamada **HealthCore Digital** para construir los sistemas, flujos de trabajo y herramientas inteligentes que permitan a la empresa operar como un proveedor sanitario moderno — seguro, eficiente y genuinamente centrado en el paciente.
+
+**Tú eres parte de esa unidad.**
 
 ---
 
-## Guía de carpetas — qué va en cada una
+## Los Departamentos y sus Problemas
 
-Lee el `README.md` enlazado dentro de cada carpeta antes de empezar a programar ahí.
+### 🏥 Operaciones Clínicas
 
-### Archivos en la raíz
+**Director:** Dr. Marcus Reid (~120 integrantes del personal clínico en 12 sedes)
 
-| Ruta                         | Propósito                                                            | Qué haces aquí                                                                                               |
-| ---------------------------- | -------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------ |
-| [`CONTEXT.md`](./CONTEXT.md) | Fuente única de verdad de tu empresa (Brasaland, TrackFlow o Nexova) | **Primer paso:** copia aquí el briefing de tu empresa para que apps, agentes y prompts usen el mismo dominio |
-| `docker-compose.yml`         | Orquestación local de todo el stack                                  | Mantener en la raíz del repo — conecta `services/`, bases de datos y otros contenedores desde un solo lugar  |
-| `README.md` / `README.es.md` | Esta guía                                                            | Orientación — estás aquí                                                                                     |
+Cada una de las 12 clínicas opera con sus propios procesos y sistema de historia clínica. Las clínicas estadounidenses usan una plataforma EHR, las del Reino Unido usan otra, y no pueden comunicarse entre sí. El personal clínico dedica 35 minutos al día a tareas de documentación que podrían ser asistidas por IA. Cuando un paciente se mueve entre sedes o cruza la frontera EE.UU.-Reino Unido, su historia no le sigue.
 
-### `uis/` — interfaces de usuario
-
-**Propósito:** Todas las aplicaciones frontend — todo lo que un humano ve y en lo que hace clic.
-
-**Pon aquí:**
-
-- Sitio web público (`website/`)
-- Admin interno / backoffice (`backoffice/`)
-- Portales de clientes, apps de fidelización, herramientas Streamlit/Gradio, dashboards con UI
-
-**Ejemplos:** landing corporativa, backoffice de operaciones, portal de fidelización, UI de dashboard de telemetría
-
-→ Ver [`uis/README.md`](./uis/README.md)
-
-### `services/` — API centralizada de la empresa (FastAPI)
-
-**Propósito:** Un **backend FastAPI centralizado** para toda la empresa — un solo punto de entrada que reduce la complejidad a medida que crece el proyecto.
-
-**Pon aquí:**
-
-- Una app FastAPI principal (p. ej. `api/`) con routers/módulos por dominio (ubicaciones, menús, ventas, telemetría, etc.)
-- Workers en background solo cuando de verdad necesiten correr separados de la API
-
-**Recomendación:** evita dividir en muchos microservicios al inicio. Añade endpoints a la misma app FastAPI; extrae un worker solo cuando sea necesario.
-
-**Ejemplos:** `/locations`, `/menus`, `/sales/reports`, webhooks, jobs programados
-
-→ Ver [`services/README.md`](./services/README.md)
-
-### `data/` — datasets, pipelines y evaluación
-
-**Propósito:** Todo lo relacionado con datos, desde archivos crudos hasta tablas listas para producción.
-
-| Subcarpeta                                      | Propósito                     | Qué haces aquí                                                                  |
-| ----------------------------------------------- | ----------------------------- | ------------------------------------------------------------------------------- |
-| [`data/raw/`](./data/raw/README.md)             | Datos fuente sin tocar        | Guardar dumps, exports, CSV/JSON de ejemplo — documentar origen y reglas de PII |
-| [`data/pipelines/`](./data/pipelines/README.md) | Jobs ETL/ELT                  | Escribir scripts de ingesta, limpieza y transformación                          |
-| [`data/process/`](./data/process/README.md)     | Salidas limpias / intermedias | Guardar artefactos de pipelines (features, agregados, tablas limpias)           |
-| [`data/eval/`](./data/eval/README.md)           | Medición de calidad           | Golden sets, datasets de evaluación RAG/agentes, métricas de experimentos       |
-
-**Flujo:** `raw` → `pipelines` → `process` → consumido por `services/`, `uis/` o `agents/`. Usa `eval` para demostrar calidad.
-
-### `agents/` — agentes de IA
-
-**Propósito:** Asistentes de IA autónomos o semi-autónomos para la empresa.
-
-**Pon aquí:**
-
-- Una subcarpeta por agente (p. ej. `support-agent/`, `onboarding-agent/`)
-- Config del agente, prompts, herramientas, tests
-- Empieza desde [`agents/_template/`](./agents/_template/README.md) al crear un agente nuevo
-
-**Ejemplos:** bot de soporte al cliente, copiloto de onboarding, asistente de formación
-
-→ Ver [`agents/README.md`](./agents/README.md)
-
-### `skills/` — capacidades reutilizables para agentes
-
-**Propósito:** Instrucciones empaquetadas + scripts que agentes (o tú en Cursor) reutilizan en todo el repo.
-
-**Pon aquí:**
-
-- Skills de análisis de datos, code review, scraping, investigación, etc.
-- Cada skill = carpeta con `SKILL.md`, scripts y recursos opcionales
-
-**Ejemplo incluido:** `skills/data-analysis/` (script de limpieza pandas + referencia de métricas)
-
-→ Ver [`skills/README.md`](./skills/README.md)
-
-### `mcps/` — servidores Model Context Protocol
-
-**Propósito:** Conectar modelos de IA con tus sistemas — bases de datos, APIs, GitHub, herramientas propias.
-
-**Pon aquí:**
-
-- Una subcarpeta por servidor MCP (p. ej. `database-mcp/`, `github-mcp/`)
-- Definiciones de tools, resources y config del servidor
-
-**Cuándo usarlo:** cuando un agente necesita acceso en vivo a datos o acciones que el código solo no puede dar
-
-→ Ver [`mcps/README.md`](./mcps/README.md)
-
-### `workflows/` — automatización y orquestación
-
-**Propósito:** Conectar sistemas sin escribir apps completas — jobs programados, webhooks, notificaciones.
-
-**Pon aquí:**
-
-- Exports de workflows n8n, configs de Make/Zapier u orquestación documentada
-- Flujos que enlazan `services/`, `data/pipelines/` y `agents/`
-
-**Ejemplos:** nuevo pedido → alerta Slack, trigger ETL nocturno, lead → sync CRM
-
-→ Ver [`workflows/README.md`](./workflows/README.md)
-
-### `packages/` — librerías compartidas
-
-**Propósito:** Código versionable reutilizado por varias apps, agentes o pipelines.
-
-**Pon aquí:**
-
-- Tipos TypeScript compartidos (`packages/shared/` → `@repo/shared-types`)
-- Librerías de componentes UI, clientes API, SDKs de analytics
-
-**Regla:** si `uis/` y `services/` comparten la misma interfaz → extráela aquí
-
-→ Ver [`packages/README.md`](./packages/README.md)
-
-### `shared/` — recursos sueltos compartidos
-
-**Propósito:** Recursos que no son un paquete completo — esquemas, plantillas, assets estáticos, docs cortas.
-
-**Pon aquí:**
-
-- Esquemas JSON, plantillas de email, specs OpenAPI, design tokens
-- Cualquier cosa reutilizada pero demasiado pequeña o no-código para `packages/`
-
-→ Ver [`shared/README.md`](./shared/README.md)
-
-### `docs/` — documentación transversal
-
-**Propósito:** Arquitectura y decisiones que abarcan todo el proyecto de la empresa.
-
-**Pon aquí:**
-
-- Diagramas de arquitectura, ADRs, guías de seguridad/observabilidad
-- Convenciones no atadas a una sola app o agente
-
-→ Ver [`docs/README.md`](./docs/README.md)
-
-### `infra/` — infraestructura y despliegue
-
-**Propósito:** Cómo corre el proyecto en Docker, cloud o CI.
-
-**Pon aquí:**
-
-- Dockerfiles, Terraform, manifiestos K8s, configs Nginx, pipelines CI/CD
-
-**Mantener en la raíz del repo:** `docker-compose.yml` — orquesta el entorno local de `services/`, bases de datos y otros contenedores desde un solo lugar.
-
-→ Ver [`infra/README.md`](./infra/README.md)
-
-### `scripts/` — scripts de ayuda
-
-**Propósito:** Automatización pequeña y repetible — no apps completas.
-
-**Pon aquí:**
-
-- Scripts de setup, generadores de seed data, wrappers de lint, migraciones puntuales
-- Documenta cada script: qué hace, argumentos y cómo ejecutarlo
-
-**Diferencia con `internal/`:** los scripts suelen ser archivos sueltos; las tools de `internal/` son proyectos estructurados con deps y tests propios.
-
-→ Ver [`scripts/README.md`](./scripts/README.md)
-
-### `internal/` — herramientas internas para desarrolladores
-
-**Propósito:** Utilidades robustas para el equipo de ingeniería.
-
-**Pon aquí:**
-
-- CLIs, herramientas de migración empaquetadas, evaluadores de prompts
-- Tools con su propio `package.json`, tests y pasos de instalación
-
-→ Ver [`internal/README.md`](./internal/README.md)
+**Lo que necesitan:** Una API unificada de historia clínica que exponga datos de ambos sistemas EHR, documentación clínica asistida por IA para reducir el tiempo administrativo, visibilidad del historial del paciente entre sedes, y un dashboard de operaciones clínicas que muestre volumen de citas, flujo de pacientes y tiempo de documentación por sede.
 
 ---
 
-## ¿Dónde pongo esto?
+### 🗓️ Experiencia del Paciente y Acceso
 
-Guía rápida de decisión:
+**Responsable:** Priya Nair (Londres)
 
-```text
-¿Tiene botones y pantallas?                → uis/
-¿Corre en servidor / API / cola?           → services/
-¿Es dato crudo o transformado?             → data/raw/ o data/process/
-¿Mueve datos entre sistemas?               → data/pipelines/
-¿Mides calidad de IA/pipelines?            → data/eval/
-¿Es un asistente de IA con un objetivo?    → agents/
-¿Es una capacidad/instrucción reutilizable?→ skills/
-¿La IA necesita llamar tools/APIs externas?→ mcps/
-¿Es n8n / automatización programada?       → workflows/
-¿2+ carpetas importan el mismo código?     → packages/
-¿Es esquema/plantilla/asset, no librería?  → shared/
-¿Es arquitectura o docs de todo el equipo? → docs/
-¿Es docker-compose para dev local?         → raíz del repo
-¿Es Docker / deploy / config cloud?        → infra/
-¿Es un script puntual?                     → scripts/
-¿Es una CLI con su propio paquete?         → internal/
-```
+Los pacientes en EE.UU. reservan citas por teléfono. Los pacientes en el Reino Unido llaman a la recepción. No hay ningún sistema de reserva online compartido. Una tasa de no-shows del 22% en la red representa tanto una mala experiencia del paciente como una pérdida económica significativa — aproximadamente 1,8 millones de dólares al año en huecos de cita perdidos. No existe ningún sistema proactivo de contacto para recordar a los pacientes o reprogramar citas de riesgo.
+
+**Lo que necesitan:** Una plataforma de reservas online unificada para ambos mercados, un sistema inteligente de recordatorios de cita con notificaciones por SMS/email/app, un modelo de predicción de no-shows que marque citas de alto riesgo para contacto proactivo, y un dashboard de experiencia del paciente que registre tasas de reserva, no-shows y satisfacción del paciente por sede.
 
 ---
 
-## Estructura del repositorio (árbol)
+### 💰 Ciclo de Ingresos y Facturación
 
-```text
-ai-engineering-company-project-monorepo/
-├── README.md / README.es.md   # Esta guía
-├── CONTEXT.md                 # ← Reemplazar con el briefing de tu empresa
-├── docker-compose.yml         # ← Orquestación local (raíz del repo)
-├── uis/                       # Frontends (website, backoffice, dashboards)
-├── services/                  # API FastAPI centralizada de la empresa
-├── data/
-│   ├── raw/                   # Datasets fuente
-│   ├── pipelines/             # Jobs ETL/ELT
-│   ├── process/               # Salidas limpias / intermedias
-│   └── eval/                  # Conjuntos de evaluación y métricas
-├── agents/                    # Agentes de IA (+ plantilla _template/)
-├── skills/                    # Skills reutilizables para agentes
-├── mcps/                      # Servidores MCP para acceso a tools
-├── workflows/                 # Flujos n8n y automatizaciones
-├── packages/                  # Librerías compartidas (@repo/shared-types, …)
-├── shared/                    # Esquemas, plantillas, assets sueltos
-├── docs/                      # Arquitectura y docs transversales
-├── infra/                     # Docker, Terraform, despliegue
-├── scripts/                   # Scripts de ayuda
-└── internal/                  # CLIs y herramientas internas de desarrollo
-```
+**Responsable:** Tom Callahan
+
+En EE.UU., una tasa de rechazo de reclamaciones del 14% — más del doble de la media del sector, que ronda el 5-8% — está costando a HealthCore ingresos significativos. Las reclamaciones se envían manualmente con prácticas de codificación inconsistentes entre sedes. En el Reino Unido, la facturación se divide entre pago privado y un pequeño contrato con el NHS, gestionados por separado sin ninguna visión unificada. Tom no puede responder "¿cuál es nuestra tasa de cobro este mes?" sin hacer llamadas.
+
+**Lo que necesitan:** Un sistema de revisión de reclamaciones asistido por IA que marque envíos de alto riesgo antes de salir, sugerencias automáticas de codificación basadas en notas clínicas, un dashboard de facturación unificado que muestre las corrientes de ingresos de EE.UU. y Reino Unido en tiempo real, análisis de patrones de rechazo para identificar problemas sistemáticos, y flujos de seguimiento automatizados para reclamaciones rechazadas o impagadas.
 
 ---
 
-## Enlaces
+### 🔒 Cumplimiento y Gobierno del Dato
 
-- [4Geeks Academy — Ingeniería de IA](https://4geeksacademy.com/es/programas-de-carrera/ingenieria-ia)
-- [Cómo empezar un proyecto de código](https://4geeks.com/lesson/how-to-start-a-project)
+**Responsable:** Claire Whitfield
+
+HealthCore opera bajo dos marcos legales distintos: HIPAA en Estados Unidos y UK GDPR en el Reino Unido. Cada sistema que gestione datos de pacientes debe evaluarse bajo ambos prismas. Los registros de acceso a datos se mantienen por separado en cada sistema EHR. Las pistas de auditoría están incompletas. Cuando un paciente solicita sus datos bajo GDPR o HIPAA, compilarlos requiere trabajo manual en múltiples sistemas.
+
+**Lo que necesitan:** Un dashboard centralizado de monitorización del cumplimiento que muestre patrones de acceso a datos en ambas jurisdicciones, consolidación automática de pistas de auditoría, una herramienta de automatización de solicitudes de datos del paciente que compile registros de todos los sistemas, y un sistema de puntuación de riesgo de cumplimiento que marque posibles violaciones antes de que se conviertan en infracciones.
 
 ---
 
-## Contribuidores
+### 👥 Personas y Fuerza Laboral
 
-Esta plantilla fue creada como parte del Programa de Carrera de Ingeniería de IA de 4Geeks Academy por [@marcogonzalo](https://www.linkedin.com/in/marcogonzalo) y [@alezanchezr](https://x.com/alesanchezr), junto a otros muchos colaboradores. Descubre más sobre nuestro [Curso de Ingeniería de IA](https://4geeksacademy.com/es/programas-de-carrera/ingenieria-ia) y sobre [otros cursos](https://4geeksacademy.com/es/comparar-programas).
+**Responsable:** Diane Foster
 
-Puedes encontrar otras plantillas y recursos similares en la [página de GitHub de 4Geeks Academy](https://github.com/4geeksacademy).
+Gestionar 200 personas en 12 sedes de dos países, cada uno con su propio marco de derecho laboral, crea una sobrecarga considerable. Los perfiles clínicos son difíciles de cubrir y tardan una media de 47 días en cerrarse — casi 20 días más que los estándares del sector. El onboarding es manual. Las horas de formación médica continua (CME), que los clínicos están legalmente obligados a registrar para mantener sus licencias, se anotan en una hoja de cálculo.
 
-_Esta plantilla la mantiene 4Geeks Academy para el track de Ingeniería de IA. Uso exclusivo del programa._
+**Lo que necesitan:** Un portal interno de RR.HH. para solicitudes de vacaciones, gestión de ausencias y consultas de políticas, un flujo de onboarding clínico automatizado con checklists de verificación de credenciales, un sistema de seguimiento de CME con alertas automáticas de caducidad, un dashboard de KPIs de RR.HH. que registre tiempo de contratación, rotación y absentismo por sede y perfil, y un chatbot de RR.HH. que responda preguntas comunes de la plantilla.
+
+---
+
+### 💻 Tecnología
+
+**CTO:** James Osei (equipo de 6 personas en Austin)
+
+El patrimonio tecnológico de HealthCore es un mosaico de sistemas adquiridos o construidos a lo largo de una década: dos plataformas EHR distintas, un sistema de facturación para EE.UU., una hoja de cálculo de facturación para el Reino Unido, un sistema de programación de citas por teléfono en EE.UU. y agendas manuales en el Reino Unido. No hay ninguna capa de datos compartida. Ninguna telemetría. Ningún registro centralizado. Cuando un sistema falla, el equipo se entera cuando una clínica llama para reportarlo.
+
+**Lo que necesitan:** Una API central de HealthCore que unifique datos de pacientes, citas, facturación y personal de ambos sistemas EHR, telemetría y monitorización en tiempo real desde las 12 sedes, un pipeline de datos que alimente dashboards clínicos, operacionales y financieros, chequeos de salud automatizados con alertas, y documentación técnica indexada para búsqueda semántica.
+
+---
+
+### 📊 Dirección Ejecutiva
+
+**CEO:** Dra. Sandra Okonkwo
+
+La Dra. Okonkwo gestiona una red sanitaria de 28 millones de dólares en dos países sin un dashboard unificado. Sus decisiones se basan en informes semanales de cada responsable de área — todos con formatos distintos, a veces contradictorios y siempre con varios días de retraso. No puede responder preguntas operacionales básicas como "¿cuál es nuestra tasa de no-shows esta semana?" o "¿qué sede tiene la tasa de rechazo de reclamaciones más alta este mes?" sin hacer llamadas.
+
+**Lo que necesita:** Un dashboard ejecutivo unificado con KPIs en tiempo real de todos los departamentos (volumen de citas, tasa de no-shows, tasa de rechazo de reclamaciones, ingresos por sede, satisfacción del paciente), un informe semanal generado automáticamente entregado cada lunes a las 7am, alertas de umbral para métricas críticas, y un asistente de IA en lenguaje natural que pueda consultar directamente.
+
+---
+
+## ¿Por qué elegir HealthCore?
+
+Elige HealthCore si te atraen:
+
+- **Sanidad y datos regulados** — construir sistemas que gestionan información sanitaria protegida bajo HIPAA y UK GDPR, donde los errores tienen consecuencias legales y la privacidad no es negociable.
+- **Operaciones sanitarias transfronterizas** — dos países, dos marcos regulatorios, dos sistemas EHR y una experiencia del paciente unificada que debe funcionar a través de todo ello.
+- **Aplicaciones de IA de alto riesgo** — asistencia a la documentación clínica, predicción de rechazo de reclamaciones y pronóstico de no-shows de citas no son mejoras opcionales; impactan directamente en la atención al paciente y la viabilidad de la empresa.
+- **Sistemas que sirven a pacientes reales** — cada dashboard, API y automatización que construyes existe para ayudar a las personas a recibir la atención sanitaria que necesitan, cuando la necesitan, sin fricciones innecesarias.
+
+Los desafíos de IA en HealthCore incluyen procesamiento de lenguaje natural de notas clínicas para sugerencias de códigos de facturación, modelos predictivos para no-shows de citas entrenados con datos multi-sede, sistemas RAG sobre documentación de cumplimiento en dos jurisdicciones y programación inteligente que equilibra las preferencias del paciente con la capacidad de la clínica. Si quieres construir sistemas donde la excelencia técnica se traduce directamente en mejor prestación de atención sanitaria, HealthCore es tu empresa.
+
+---
+
+_Documento interno — 4Geeks Academy · AI Engineering Track_
+_Uso exclusivo para la generación de proyectos del programa_
